@@ -1,0 +1,55 @@
+import java.util.Scanner;
+public class Main
+{
+    public static void main(String[] args) {
+        Scanner Sc=new Scanner(System.in);
+        int n=Sc.nextInt();
+        float pi[]={5,2,7,3,9,10};
+        
+        float  wi[]={2,2,2,3,3,5};
+        float sum[]=new float[n];
+        for(int i =0;i<n;i++)
+        {
+             sum[i]=pi[i]/wi[i];
+            System.out.print(sum[i] + " ");
+        }
+        quickSort(sum, 0, n - 1);
+        for(int i=0;i<n;i++)
+        {
+            System.out.println(sum[i]+ " ");
+        }
+    }
+        
+          static void swap(float sum[], int i, int j)
+    {
+        float temp = sum[i];
+        sum[i] = sum[j];
+        sum[j] = temp;
+    }
+        static void quickSort(float sum[], int low, int high)
+    {
+        if (low < high) {
+  
+            int pi = partition(sum, low, high);
+            quickSort(sum, low, pi - 1);
+            quickSort(sum, pi + 1, high);
+        }
+    }
+         static int partition(float sum[], int low, int high)
+    {
+  
+      
+        float pivot = sum[high];
+        int i = (low - 1);
+        for (int j = low; j <= high - 1; j++) {
+  
+            if (sum[j] < pivot) {
+                i++;
+                swap(sum, i, j);
+            }
+        }
+        swap(sum, i + 1, high);
+        return (i + 1);
+    }
+    
+    }
